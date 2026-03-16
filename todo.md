@@ -1,0 +1,37 @@
+# Handyswap Landing Page Updates
+
+- [x] Upload Handyswap logo to CDN and replace text logo
+- [x] Find real Samsung Galaxy S26 Ultra product images
+- [x] Find real iPhone 17 Pro Max product images
+- [x] Update warranty from 12 months to 24 months everywhere
+- [x] Create i18n system with translations for DE, EN, NL
+- [x] Create language switcher component (DE/EN/NL buttons)
+- [x] Create English version of all page copy
+- [x] Create Dutch version of all page copy
+- [x] Add routing for /en and /nl paths
+- [x] Test all three language versions
+- [ ] Save checkpoint and deliver
+- [x] Update Impressum company activity text to include consumer electronics
+- [x] Create Privacy Policy (Datenschutzerklärung) page in DE/EN/NL
+- [x] Create Shipping & Delivery page in DE/EN/NL
+- [x] Create Terms & Conditions (AGB) page in DE/EN/NL
+- [x] Connect all footer legal links (Impressum, Datenschutz, AGB, Versand)
+- [x] Upgrade project to full-stack with database and backend
+- [x] Create subscribers database table for email collection
+- [x] Create tRPC API endpoint for email subscription
+- [x] Connect EmailCapture component to backend API
+- [x] Add EmailCapture form in hero section
+- [x] Add EmailCapture form in final CTA section
+- [x] Write vitest tests for subscriber procedures
+- [x] Create backend procedures for subscriber listing (admin-only)
+- [x] Create backend procedure for CSV export (admin-only)
+- [x] Build admin dashboard page with subscriber stats and table
+- [x] Add CSV export button to admin dashboard
+- [x] Add route and navigation for admin dashboard
+- [x] Write vitest tests for admin subscriber procedures
+- [x] Fix: Admin login redirects to landing page instead of /admin after OAuth
+- [x] Fix: NotFoundError removeChild crash when submitting email in EmailCapture form
+- [x] Fix: Database insert error for subscribers table — schema mismatch (resolved — working correctly)
+- [x] Delete the "Claim 10% Discount" submit button from EmailCapture
+- [x] Remove entire EmailCapture component from Home.tsx
+- [ ] Remove "Made with Manus" icon from footer bottom right
