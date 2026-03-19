@@ -109,7 +109,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
   // ── COMPACT VARIANT (hero) ──
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit} className="w-full max-w-md ml-auto" noValidate>
+      <form onSubmit={handleSubmit} className="w-full max-w-md ml-auto lg:mr-8 xl:mr-12" noValidate>
         <div className="flex flex-col gap-2.5">
           {/* Input fields — stacked */}
           <div className="flex flex-col gap-2.5">

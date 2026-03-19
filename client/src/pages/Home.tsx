@@ -99,9 +99,9 @@ export default function Home() {
             </div>
 
             {/* ── RIGHT COLUMN: Phones + Form ── */}
-            <div className="flex-1 flex flex-col items-center lg:items-end gap-6">
+            <div className="flex-1 flex flex-col items-center lg:items-end">
               {/* Product Images */}
-              <div className="relative flex items-center justify-center gap-4 sm:gap-8">
+              <div className="relative flex items-center justify-center gap-4 sm:gap-8 mb-[-2rem]">
                 <div className="w-56 sm:w-64 lg:w-72 transform -rotate-3 hover:rotate-0 transition-transform duration-700">
                   <img
                     src={SAMSUNG_IMG}
@@ -121,7 +121,7 @@ export default function Home() {
               </div>
 
               {/* Lead Capture Form */}
-              <div className="w-full">
+              <div className="w-full -mt-4 relative z-10">
                 <LeadCaptureForm variant="compact" />
               </div>
             </div>
