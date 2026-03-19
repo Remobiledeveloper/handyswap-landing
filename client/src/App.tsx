@@ -11,9 +11,7 @@ import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import Shipping from "./pages/Shipping";
 import AGB from "./pages/AGB";
-import AdminDashboard from "./pages/AdminDashboard";
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -31,9 +29,7 @@ function Router() {
       <Route path={"/agb"} component={AGB} />
       <Route path={"/en/terms"} component={AGB} />
       <Route path={"/nl/voorwaarden"} component={AGB} />
-      <Route path={"/admin"} component={AdminDashboard} />
       <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
       <Route component={NotFound} />
     </Switch>
   );

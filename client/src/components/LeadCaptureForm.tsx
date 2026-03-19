@@ -1,15 +1,14 @@
 /*
- * Design: Midnight Tech — Dark Luxury Editorial
  * LeadCaptureForm: Name + email lead capture for pre-launch 10% discount
- * Posts to Shopify endpoint (placeholder). Two variants: compact (hero) and full (CTA section).
+ * Two variants: compact (hero) and full (CTA section).
  */
 import { useLocale } from "@/contexts/LocaleContext";
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, AlertTriangle } from "lucide-react";
 
-// TODO: Replace with actual Shopify endpoint once provided
-const SHOPIFY_FORM_ENDPOINT = "https://shopify.example.com/api/leads";
+// TODO: Replace with your actual form submission endpoint
+const FORM_ENDPOINT = "https://example.com/api/leads";
 
 type FormStatus = "idle" | "submitting" | "success" | "error-duplicate" | "error";
 
@@ -44,7 +43,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
     setFieldErrors({});
 
     try {
-      const res = await fetch(SHOPIFY_FORM_ENDPOINT, {
+      const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
