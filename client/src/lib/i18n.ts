@@ -23,7 +23,6 @@ export interface Translations {
     cta: string;
     privacy: string;
     privacyLink: string;
-    doubleOptIn: string;
     successTitle: string;
     successMessage: string;
     successCode: string;
@@ -164,8 +163,7 @@ const de: Translations = {
     placeholder: "Deine E-Mail-Adresse",
     cta: "10% Rabatt sichern",
     privacy: "Mit der Anmeldung stimmst du unserer",
-    privacyLink: "Datenschutzerklärung",
-    doubleOptIn: "zu. Du erhältst eine Bestätigungs-E-Mail (Double Opt-In).",
+    privacyLink: "Datenschutzerklärung zu.",
     successTitle: "Du bist dabei!",
     successMessage:
       "Dein persönlicher",
@@ -373,8 +371,7 @@ const en: Translations = {
     placeholder: "Your email address",
     cta: "Claim 10% Discount",
     privacy: "By signing up, you agree to our",
-    privacyLink: "Privacy Policy",
-    doubleOptIn: ". You will receive a confirmation email (Double Opt-In).",
+    privacyLink: "Privacy Policy.",
     successTitle: "You're in!",
     successMessage: "Your personal",
     successCode: "10% discount code",
@@ -580,8 +577,7 @@ const nl: Translations = {
     placeholder: "Je e-mailadres",
     cta: "10% Korting Claimen",
     privacy: "Door je aan te melden ga je akkoord met ons",
-    privacyLink: "Privacybeleid",
-    doubleOptIn: ". Je ontvangt een bevestigingsmail (Double Opt-In).",
+    privacyLink: "Privacybeleid.",
     successTitle: "Je bent erbij!",
     successMessage: "Je persoonlijke",
     successCode: "10%-kortingscode",

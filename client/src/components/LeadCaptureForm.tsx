@@ -198,8 +198,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
           {t.form.privacy}{" "}
           <a href={privacyHref} className="underline underline-offset-2 hover:text-muted-foreground transition-colors">
             {t.form.privacyLink}
-          </a>{" "}
-          {t.form.doubleOptIn}
+          </a>
         </p>
       </form>
     );
@@ -305,8 +304,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         {t.form.privacy}{" "}
         <a href={privacyHref} className="underline underline-offset-2 hover:text-muted-foreground transition-colors">
           {t.form.privacyLink}
-        </a>{" "}
-        {t.form.doubleOptIn}
+        </a>
       </p>
     </form>
   );

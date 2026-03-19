@@ -100,8 +100,7 @@ export default function EmailCapture() {
           {t.form.privacy}{" "}
           <a href={privacyLink} className="underline hover:text-white transition-colors">
             {t.form.privacyLink}
-          </a>{" "}
-          {t.form.doubleOptIn}
+          </a>
         </p>
       </form>
     </div>
