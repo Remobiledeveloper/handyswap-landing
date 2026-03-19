@@ -26,7 +26,7 @@ function CountdownUnit({ value, label }: { value: number; label: string }) {
 
 function Separator() {
   return (
-    <div className="flex flex-col items-center gap-2 pt-2">
+    <div className="flex items-center h-[80px] sm:h-[96px]">
       <span className="text-2xl sm:text-3xl font-bold text-hs-blue">:</span>
     </div>
   );

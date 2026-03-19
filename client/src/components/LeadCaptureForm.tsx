@@ -82,7 +82,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         transition={{ duration: 0.4, ease: "easeOut" }}
         className={
           variant === "compact"
-            ? "w-full max-w-lg"
+            ? "w-full max-w-md ml-auto lg:mr-8 xl:mr-12"
             : "w-full"
         }
       >
@@ -97,9 +97,6 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
             {t.form.successMessage}{" "}
             <span className={`font-semibold ${variant === "compact" ? "text-amber-300" : "text-hs-gold"}`}>{t.form.successCode}</span>{" "}
             {t.form.successDate}
-          </p>
-          <p className={`text-xs mt-1 ${variant === "compact" ? "text-white/40" : "text-muted-foreground/70"}`}>
-            {t.form.successConfirm}
           </p>
         </div>
       </motion.div>

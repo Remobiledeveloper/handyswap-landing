@@ -633,7 +633,7 @@ export default function Datenschutz() {
             <span className="text-sm font-medium">{t.backToHome}</span>
           </a>
           <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663337882967/2Sz8JEY8PPAs458tHGBkme/logo-primary-1-_9f4f4e4c.png"
+            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663337882967/2Sz8JEY8PPAs458tHGBkme/handyswap-logo_8e24ea7d.png"
             alt="Handyswap"
             className="h-8 w-auto"
           />
