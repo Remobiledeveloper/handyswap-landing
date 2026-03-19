@@ -452,7 +452,7 @@ const translations = {
 
 function SectionCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+    <div className="bg-muted border border-border rounded-xl p-6">
       {children}
     </div>
   );
@@ -462,7 +462,7 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2 pl-1">
       {items.map((item, i) => (
-        <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+        <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
           <span className="text-hs-blue mt-1 flex-shrink-0">•</span>
           <span>{item}</span>
         </li>
@@ -475,7 +475,7 @@ function NumberedList({ items }: { items: string[] }) {
   return (
     <ol className="space-y-2 pl-1">
       {items.map((item, i) => (
-        <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+        <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
           <span className="text-hs-blue font-semibold mt-0 flex-shrink-0 w-5 text-right">{i + 1}.</span>
           <span>{item}</span>
         </li>
@@ -493,7 +493,7 @@ function NoteBox({ text }: { text: string }) {
 }
 
 function SubHeading({ text }: { text: string }) {
-  return <h3 className="text-white font-semibold text-base mb-3 mt-5 first:mt-0">{text}</h3>;
+  return <h3 className="text-foreground font-semibold text-base mb-3 mt-5 first:mt-0">{text}</h3>;
 }
 
 /* ------------------------------------------------------------------ */
@@ -506,11 +506,11 @@ export default function AGB() {
   const homeLink = locale === "de" ? "/" : `/${locale}`;
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/5">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <a href={homeLink} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <a href={homeLink} className="flex items-center gap-2 text-muted-foreground hover:text-hs-blue transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium">{t.backToHome}</span>
           </a>
@@ -527,14 +527,14 @@ export default function AGB() {
         <div className="max-w-3xl mx-auto px-4">
           {/* Title */}
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-2">{t.title}</h1>
-          <p className="text-gray-500 text-xs mb-6">{t.effectiveDate}</p>
-          <p className="text-gray-300 text-sm leading-relaxed mb-10">{t.intro}</p>
+          <p className="text-muted-foreground text-xs mb-6">{t.effectiveDate}</p>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-10">{t.intro}</p>
 
           {/* 1. Introduction / Scope */}
           <section className="mb-8">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s1Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s1Text}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s1Text}</p>
               <NoteBox text={t.s1Note} />
             </SectionCard>
           </section>
@@ -671,7 +671,7 @@ export default function AGB() {
           <section className="mb-8">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s15Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm leading-relaxed">{t.s15Text}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed">{t.s15Text}</p>
             </SectionCard>
           </section>
 
@@ -688,9 +688,9 @@ export default function AGB() {
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.contactTitle}</h2>
             <div className="bg-gradient-to-br from-hs-blue/10 to-white/5 border border-hs-blue/20 rounded-xl p-6">
               <div className="space-y-1 text-sm">
-                <p className="text-white font-medium">{t.contactCompany}</p>
-                <p className="text-gray-300">{t.contactPhone}</p>
-                <p className="text-gray-300">
+                <p className="text-foreground font-medium">{t.contactCompany}</p>
+                <p className="text-muted-foreground">{t.contactPhone}</p>
+                <p className="text-muted-foreground">
                   {t.contactEmail.split("support@handyswap.com")[0]}
                   <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline">support@handyswap.com</a>
                 </p>
@@ -701,9 +701,9 @@ export default function AGB() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8">
+      <footer className="border-t border-border py-8">
         <div className="container text-center">
-          <p className="text-gray-500 text-xs">
+          <p className="text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} Handyswap.com — Remobile 786 SL. All rights reserved.
           </p>
         </div>

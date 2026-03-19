@@ -108,11 +108,11 @@ export default function Impressum() {
   const homeLink = locale === "de" ? "/" : `/${locale}`;
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/5">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <a href={homeLink} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <a href={homeLink} className="flex items-center gap-2 text-muted-foreground hover:text-hs-blue transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium">{t.backToHome}</span>
           </a>
@@ -129,36 +129,36 @@ export default function Impressum() {
         <div className="max-w-3xl mx-auto px-4">
           {/* Title */}
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-2">{t.title}</h1>
-          <p className="text-gray-400 text-sm mb-1">{t.subtitle}</p>
-          <p className="text-gray-500 text-xs mb-10">{t.effectiveDate}</p>
+          <p className="text-muted-foreground text-sm mb-1">{t.subtitle}</p>
+          <p className="text-muted-foreground text-xs mb-10">{t.effectiveDate}</p>
 
           {/* Company Information */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.companyInfo}</h2>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.companyName}:</span>
-                <span className="text-white text-sm">Remobile 786 SL</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.companyName}:</span>
+                <span className="text-foreground text-sm">Remobile 786 SL</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.register}:</span>
-                <span className="text-white text-sm">Avinguda Diagonal, 442, 08037 Barcelona, Spain</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.register}:</span>
+                <span className="text-foreground text-sm">Avinguda Diagonal, 442, 08037 Barcelona, Spain</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.telephone}:</span>
-                <span className="text-white text-sm">+49 1522 5686186</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.telephone}:</span>
+                <span className="text-foreground text-sm">+49 1522 5686186</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.email}:</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.email}:</span>
                 <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline text-sm">support@handyswap.com</a>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.website}:</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.website}:</span>
                 <a href="https://handyswap.com" className="text-hs-blue hover:underline text-sm">https://handyswap.com</a>
               </div>
-              <div className="pt-2 border-t border-white/5">
-                <span className="text-gray-400 text-sm font-medium">{t.activity}:</span>
-                <p className="text-white text-sm mt-1">{t.activityText}</p>
+              <div className="pt-2 border-t border-border">
+                <span className="text-muted-foreground text-sm font-medium">{t.activity}:</span>
+                <p className="text-foreground text-sm mt-1">{t.activityText}</p>
               </div>
             </div>
           </section>
@@ -166,22 +166,22 @@ export default function Impressum() {
           {/* Legal & Tax Information */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.legalTax}</h2>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.taxId}:</span>
-                <span className="text-white text-sm">B56409766</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.taxId}:</span>
+                <span className="text-foreground text-sm">B56409766</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.companyReg}:</span>
-                <span className="text-white text-sm">B56409766</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.companyReg}:</span>
+                <span className="text-foreground text-sm">B56409766</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.vatId}:</span>
-                <span className="text-white text-sm">DE363848600</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.vatId}:</span>
+                <span className="text-foreground text-sm">DE363848600</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.managingDirector}:</span>
-                <span className="text-white text-sm">H.A. Mian</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.managingDirector}:</span>
+                <span className="text-foreground text-sm">H.A. Mian</span>
               </div>
             </div>
           </section>
@@ -189,27 +189,27 @@ export default function Impressum() {
           {/* German Compliance Numbers */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.germanCompliance}</h2>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.eprNumber}:</span>
-                <span className="text-white text-sm font-mono">DE2185706986832</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.eprNumber}:</span>
+                <span className="text-foreground text-sm font-mono">DE2185706986832</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.weeeNumber}:</span>
-                <span className="text-white text-sm font-mono">DE83487761</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.weeeNumber}:</span>
+                <span className="text-foreground text-sm font-mono">DE83487761</span>
               </div>
               <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{t.battgNumber}:</span>
-                <span className="text-white text-sm font-mono">DE19151962</span>
+                <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{t.battgNumber}:</span>
+                <span className="text-foreground text-sm font-mono">DE19151962</span>
               </div>
-              <p className="text-gray-500 text-xs pt-2 border-t border-white/5">{t.complianceNote}</p>
+              <p className="text-muted-foreground text-xs pt-2 border-t border-border">{t.complianceNote}</p>
             </div>
           </section>
 
           {/* Disclaimer */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.disclaimer}</h2>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="bg-muted border border-border rounded-xl p-6">
               <p className="text-gray-300 text-sm leading-relaxed">{t.disclaimerText}</p>
             </div>
           </section>
@@ -217,16 +217,16 @@ export default function Impressum() {
           {/* Accessibility & Contact */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.accessibility}</h2>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="bg-muted border border-border rounded-xl p-6">
               <p className="text-gray-300 text-sm mb-3">{t.accessibilityText}</p>
               <div className="space-y-1">
                 <p className="text-sm">
-                  <span className="text-gray-400">{t.email}: </span>
+                  <span className="text-muted-foreground">{t.email}: </span>
                   <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline">support@handyswap.com</a>
                 </p>
                 <p className="text-sm">
-                  <span className="text-gray-400">{t.telephone}: </span>
-                  <span className="text-white">+49 1522 5686186</span>
+                  <span className="text-muted-foreground">{t.telephone}: </span>
+                  <span className="text-foreground">+49 1522 5686186</span>
                 </p>
               </div>
             </div>
@@ -235,7 +235,7 @@ export default function Impressum() {
           {/* Updates */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.updates}</h2>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="bg-muted border border-border rounded-xl p-6">
               <p className="text-gray-300 text-sm leading-relaxed">{t.updatesText}</p>
             </div>
           </section>
@@ -243,9 +243,9 @@ export default function Impressum() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8">
+      <footer className="border-t border-border py-8">
         <div className="container text-center">
-          <p className="text-gray-500 text-xs">
+          <p className="text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} Handyswap.com — Remobile 786 SL. All rights reserved.
           </p>
         </div>

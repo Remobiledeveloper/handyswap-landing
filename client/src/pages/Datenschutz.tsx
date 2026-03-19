@@ -587,7 +587,7 @@ const translations = {
 
 function SectionCard({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+    <div className="bg-muted border border-border rounded-xl p-6">
       {children}
     </div>
   );
@@ -597,7 +597,7 @@ function BulletList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-2 pl-1">
       {items.map((item, i) => (
-        <li key={i} className="text-gray-300 text-sm flex items-start gap-2">
+        <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
           <span className="text-hs-blue mt-1 flex-shrink-0">•</span>
           <span>{item}</span>
         </li>
@@ -624,11 +624,11 @@ export default function Datenschutz() {
   const homeLink = locale === "de" ? "/" : `/${locale}`;
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/5">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <a href={homeLink} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <a href={homeLink} className="flex items-center gap-2 text-muted-foreground hover:text-hs-blue transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium">{t.backToHome}</span>
           </a>
@@ -645,29 +645,29 @@ export default function Datenschutz() {
         <div className="max-w-3xl mx-auto px-4">
           {/* Title */}
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-2">{t.title}</h1>
-          <p className="text-gray-500 text-xs mb-6">{t.effectiveDate}</p>
-          <p className="text-gray-300 text-sm leading-relaxed mb-10">{t.intro}</p>
+          <p className="text-muted-foreground text-xs mb-6">{t.effectiveDate}</p>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-10">{t.intro}</p>
 
           {/* 1. Introduction */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s1Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s1Intro}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s1Intro}</p>
               <BulletList items={t.s1List} />
-              <p className="text-gray-300 text-sm mt-4 mb-3">{t.s1Explains}</p>
+              <p className="text-muted-foreground text-sm mt-4 mb-3">{t.s1Explains}</p>
               <BulletList items={t.s1ExplainsList} />
-              <p className="text-gray-300 text-sm mt-4">{t.s1Applies}</p>
+              <p className="text-muted-foreground text-sm mt-4">{t.s1Applies}</p>
             </SectionCard>
           </section>
 
           {/* 2. Personal Data We Collect */}
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s2Title}</h2>
-            <p className="text-gray-300 text-sm mb-4">{t.s2Intro}</p>
+            <p className="text-muted-foreground text-sm mb-4">{t.s2Intro}</p>
             <div className="space-y-4">
               {t.s2Categories.map((cat, i) => (
                 <SectionCard key={i}>
-                  <h3 className="text-white font-semibold text-base mb-3">
+                  <h3 className="text-foreground font-semibold text-base mb-3">
                     <span className="mr-2">{cat.icon}</span>{cat.heading}
                   </h3>
                   <BulletList items={cat.items} />
@@ -680,9 +680,9 @@ export default function Datenschutz() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s3Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s3Intro}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s3Intro}</p>
               <BulletList items={t.s3List} />
-              <p className="text-gray-300 text-sm mt-4">{t.s3Note}</p>
+              <p className="text-muted-foreground text-sm mt-4">{t.s3Note}</p>
             </SectionCard>
           </section>
 
@@ -699,9 +699,9 @@ export default function Datenschutz() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s5Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s5Intro}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s5Intro}</p>
               <BulletList items={t.s5List} />
-              <p className="text-white font-medium text-sm mt-5 mb-3">{t.s5Transfer}</p>
+              <p className="text-foreground font-medium text-sm mt-5 mb-3">{t.s5Transfer}</p>
               <BulletList items={t.s5TransferList} />
             </SectionCard>
           </section>
@@ -727,10 +727,10 @@ export default function Datenschutz() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s8Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s8Intro}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s8Intro}</p>
               <BulletList items={t.s8List} />
-              <div className="mt-4 pt-4 border-t border-white/5">
-                <p className="text-gray-300 text-sm">
+              <div className="mt-4 pt-4 border-t border-border">
+                <p className="text-muted-foreground text-sm">
                   {t.s8Exercise.split("support@handyswap.com")[0]}
                   <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline">support@handyswap.com</a>
                   {t.s8Exercise.split("support@handyswap.com")[1]}
@@ -743,9 +743,9 @@ export default function Datenschutz() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s9Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s9Intro}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s9Intro}</p>
               <BulletList items={t.s9List} />
-              <p className="text-gray-300 text-sm mt-4">{t.s9Note}</p>
+              <p className="text-muted-foreground text-sm mt-4">{t.s9Note}</p>
             </SectionCard>
           </section>
 
@@ -761,9 +761,9 @@ export default function Datenschutz() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s11Title}</h2>
             <SectionCard>
-              <p className="text-gray-300 text-sm mb-3">{t.s11Intro}</p>
+              <p className="text-muted-foreground text-sm mb-3">{t.s11Intro}</p>
               <BulletList items={t.s11List} />
-              <p className="text-gray-300 text-sm mt-4">{t.s11Note}</p>
+              <p className="text-muted-foreground text-sm mt-4">{t.s11Note}</p>
             </SectionCard>
           </section>
 
@@ -780,9 +780,9 @@ export default function Datenschutz() {
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.s13Title}</h2>
             <div className="bg-gradient-to-br from-hs-blue/10 to-white/5 border border-hs-blue/20 rounded-xl p-6">
               <div className="space-y-1 text-sm">
-                <p className="text-white font-medium">{t.s13Company}</p>
-                <p className="text-gray-300">{t.s13Phone}</p>
-                <p className="text-gray-300">
+                <p className="text-foreground font-medium">{t.s13Company}</p>
+                <p className="text-muted-foreground">{t.s13Phone}</p>
+                <p className="text-muted-foreground">
                   {t.s13Email.split("support@handyswap.com")[0]}
                   <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline">support@handyswap.com</a>
                 </p>
@@ -793,9 +793,9 @@ export default function Datenschutz() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8">
+      <footer className="border-t border-border py-8">
         <div className="container text-center">
-          <p className="text-gray-500 text-xs">
+          <p className="text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} Handyswap.com — Remobile 786 SL. All rights reserved.
           </p>
         </div>

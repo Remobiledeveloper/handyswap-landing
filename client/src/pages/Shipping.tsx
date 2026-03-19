@@ -238,11 +238,11 @@ export default function Shipping() {
   const homeLink = locale === "de" ? "/" : `/${locale}`;
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A1628]/90 backdrop-blur-md border-b border-white/5">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <a href={homeLink} className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+          <a href={homeLink} className="flex items-center gap-2 text-muted-foreground hover:text-hs-blue transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-sm font-medium">{t.backToHome}</span>
           </a>
@@ -259,19 +259,19 @@ export default function Shipping() {
         <div className="max-w-3xl mx-auto px-4">
           {/* Title */}
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-2">{t.title}</h1>
-          <p className="text-gray-400 text-sm mb-1">{t.subtitle}</p>
-          <p className="text-gray-500 text-xs mb-8">{t.effectiveDate}</p>
+          <p className="text-muted-foreground text-sm mb-1">{t.subtitle}</p>
+          <p className="text-muted-foreground text-xs mb-8">{t.effectiveDate}</p>
 
           {/* Intro */}
-          <p className="text-gray-300 text-sm leading-relaxed mb-8">{t.intro}</p>
+          <p className="text-muted-foreground text-sm leading-relaxed mb-8">{t.intro}</p>
 
           {/* Company Details */}
-          <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-10">
-            <h3 className="text-white font-semibold text-base mb-3">{t.companyTitle}</h3>
+          <div className="bg-muted border border-border rounded-xl p-6 mb-10">
+            <h3 className="text-foreground font-semibold text-base mb-3">{t.companyTitle}</h3>
             <div className="space-y-1 text-sm">
-              <p className="text-white font-medium">{t.companyName}</p>
-              <p className="text-gray-300">📞 {t.companyPhone}</p>
-              <p className="text-gray-300">📧 <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline">{t.companyEmail}</a></p>
+              <p className="text-foreground font-medium">{t.companyName}</p>
+              <p className="text-muted-foreground">📞 {t.companyPhone}</p>
+              <p className="text-muted-foreground">📧 <a href="mailto:support@handyswap.com" className="text-hs-blue hover:underline">{t.companyEmail}</a></p>
             </div>
           </div>
 
@@ -281,16 +281,16 @@ export default function Shipping() {
               {sectionIcons.s1}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s1Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="bg-muted border border-border rounded-xl p-6">
               {t.s1Items.map((item, i) => (
                 <div key={i} className="flex flex-col sm:flex-row sm:gap-2 mb-3">
-                  <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{item.label}:</span>
-                  <span className="text-white text-sm font-semibold">{item.value}</span>
+                  <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{item.label}:</span>
+                  <span className="text-foreground text-sm font-semibold">{item.value}</span>
                 </div>
               ))}
-              <div className="space-y-2 mt-3 pt-3 border-t border-white/5">
+              <div className="space-y-2 mt-3 pt-3 border-t border-border">
                 {t.s1Text.map((text, i) => (
-                  <p key={i} className="text-gray-300 text-sm">{text}</p>
+                  <p key={i} className="text-muted-foreground text-sm">{text}</p>
                 ))}
               </div>
             </div>
@@ -302,14 +302,14 @@ export default function Shipping() {
               {sectionIcons.s2}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s2Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               {t.s2Items.map((item, i) => (
                 <div key={i} className="flex flex-col sm:flex-row sm:gap-2">
-                  <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{item.label}:</span>
-                  <span className="text-white text-sm">{item.value}</span>
+                  <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{item.label}:</span>
+                  <span className="text-foreground text-sm">{item.value}</span>
                 </div>
               ))}
-              <p className="text-gray-300 text-sm pt-2">{t.s2Extra}</p>
+              <p className="text-muted-foreground text-sm pt-2">{t.s2Extra}</p>
             </div>
           </section>
 
@@ -319,12 +319,12 @@ export default function Shipping() {
               {sectionIcons.s3}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s3Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="bg-muted border border-border rounded-xl p-6">
               <div className="space-y-3 mb-4">
                 {t.s3Items.map((item, i) => (
                   <div key={i} className="flex flex-col sm:flex-row sm:gap-2">
-                    <span className="text-gray-400 text-sm font-medium sm:w-56 flex-shrink-0">{item.label}:</span>
-                    <span className="text-white text-sm font-semibold">{item.value}</span>
+                    <span className="text-muted-foreground text-sm font-medium sm:w-56 flex-shrink-0">{item.label}:</span>
+                    <span className="text-foreground text-sm font-semibold">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -340,11 +340,11 @@ export default function Shipping() {
               {sectionIcons.s4}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s4Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               {t.s4Items.map((item, i) => (
                 <div key={i} className="flex flex-col sm:flex-row sm:gap-2">
-                  <span className="text-gray-400 text-sm font-medium sm:w-48 flex-shrink-0">{item.label}:</span>
-                  <span className="text-white text-sm">{item.value}</span>
+                  <span className="text-muted-foreground text-sm font-medium sm:w-48 flex-shrink-0">{item.label}:</span>
+                  <span className="text-foreground text-sm">{item.value}</span>
                 </div>
               ))}
             </div>
@@ -356,9 +356,9 @@ export default function Shipping() {
               {sectionIcons.s5}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s5Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               {t.s5Text.map((text, i) => (
-                <p key={i} className="text-gray-300 text-sm">{text}</p>
+                <p key={i} className="text-muted-foreground text-sm">{text}</p>
               ))}
             </div>
           </section>
@@ -369,12 +369,12 @@ export default function Shipping() {
               {sectionIcons.s6}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s6Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6">
+            <div className="bg-muted border border-border rounded-xl p-6">
               <div className="space-y-3">
                 {t.s6Items.map((item, i) => (
                   <div key={i} className="flex flex-col sm:flex-row sm:gap-2">
-                    <span className="text-gray-400 text-sm font-medium sm:w-64 flex-shrink-0">{item.label}:</span>
-                    <span className="text-white text-sm">{item.value}</span>
+                    <span className="text-muted-foreground text-sm font-medium sm:w-64 flex-shrink-0">{item.label}:</span>
+                    <span className="text-foreground text-sm">{item.value}</span>
                   </div>
                 ))}
               </div>
@@ -387,9 +387,9 @@ export default function Shipping() {
               {sectionIcons.s7}
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.s7Title}</h2>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 space-y-3">
+            <div className="bg-muted border border-border rounded-xl p-6 space-y-3">
               {t.s7Text.map((text, i) => (
-                <p key={i} className="text-gray-300 text-sm">{text}</p>
+                <p key={i} className="text-muted-foreground text-sm">{text}</p>
               ))}
             </div>
           </section>
@@ -408,9 +408,9 @@ export default function Shipping() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-8">
+      <footer className="border-t border-border py-8">
         <div className="container text-center">
-          <p className="text-gray-500 text-xs">
+          <p className="text-muted-foreground text-xs">
             &copy; {new Date().getFullYear()} Handyswap.com — Remobile 786 SL. All rights reserved.
           </p>
         </div>

@@ -1,8 +1,7 @@
 /**
  * CookieConsent.tsx
  * GDPR-compliant cookie consent banner for Handyswap.com
- * Dark luxury editorial style — slides up from bottom
- * Supports DE/EN/NL via LocaleContext
+ * Slides up from bottom — supports DE/EN/NL via LocaleContext
  */
 
 import { useState, useEffect } from "react";
@@ -56,7 +55,6 @@ export default function CookieConsent() {
   useEffect(() => {
     const consent = localStorage.getItem("hs-cookie-consent");
     if (!consent) {
-      // Small delay so it doesn't flash on load
       const timer = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(timer);
     }
@@ -82,7 +80,7 @@ export default function CookieConsent() {
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
           className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6"
         >
-          <div className="max-w-3xl mx-auto bg-[#0F1D32]/95 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/40">
+          <div className="max-w-3xl mx-auto bg-white/95 backdrop-blur-xl border border-border rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/10">
             {/* Header */}
             <div className="flex items-center gap-3 mb-4">
               <svg
@@ -99,21 +97,21 @@ export default function CookieConsent() {
                 <circle cx="16" cy="13" r="1" fill="currentColor" />
                 <circle cx="13" cy="17" r="0.8" fill="currentColor" />
               </svg>
-              <h3 className="text-lg font-bold text-white font-display">
+              <h3 className="text-lg font-bold text-foreground font-display">
                 {t.title}
               </h3>
             </div>
 
             {/* Message */}
-            <p className="text-sm text-gray-400 leading-relaxed mb-5">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-5">
               {t.message}
             </p>
 
             {/* Cookie types */}
             <div className="space-y-3 mb-6">
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 w-4 h-4 rounded border border-emerald-500 bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-                  <svg viewBox="0 0 12 12" className="w-2.5 h-2.5 text-emerald-400">
+                <div className="mt-0.5 w-4 h-4 rounded border border-emerald-500 bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                  <svg viewBox="0 0 12 12" className="w-2.5 h-2.5 text-emerald-600">
                     <path
                       d="M2 6l3 3 5-5"
                       fill="none"
@@ -125,23 +123,23 @@ export default function CookieConsent() {
                   </svg>
                 </div>
                 <div>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-foreground">
                     {t.essential}
                   </span>
-                  <span className="text-xs text-gray-500 ml-2">
+                  <span className="text-xs text-muted-foreground ml-2">
                     ({locale === "de" ? "immer aktiv" : locale === "nl" ? "altijd actief" : "always active"})
                   </span>
-                  <p className="text-xs text-gray-500 mt-0.5">{t.essentialDesc}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{t.essentialDesc}</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="mt-0.5 w-4 h-4 rounded border border-hs-blue/50 bg-hs-blue/10 flex-shrink-0" />
+                <div className="mt-0.5 w-4 h-4 rounded border border-hs-blue/50 bg-hs-blue-light flex-shrink-0" />
                 <div>
-                  <span className="text-sm font-semibold text-white">
+                  <span className="text-sm font-semibold text-foreground">
                     {t.analytics}
                   </span>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-muted-foreground mt-0.5">
                     {t.analyticsDesc}
                   </p>
                 </div>
@@ -152,13 +150,13 @@ export default function CookieConsent() {
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleAccept}
-                className="flex-1 px-6 py-3 bg-hs-blue hover:bg-hs-blue/90 text-white font-semibold text-sm rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-hs-blue/20"
+                className="flex-1 px-6 py-3 bg-hs-blue hover:bg-hs-blue/90 text-white font-semibold text-sm rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-hs-blue/15"
               >
                 {t.accept}
               </button>
               <button
                 onClick={handleDecline}
-                className="flex-1 px-6 py-3 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white font-semibold text-sm rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200"
+                className="flex-1 px-6 py-3 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground font-semibold text-sm rounded-lg border border-border hover:border-border transition-all duration-200"
               >
                 {t.decline}
               </button>
@@ -168,7 +166,7 @@ export default function CookieConsent() {
             <div className="mt-4 text-center">
               <a
                 href={locale === "de" ? "/datenschutz" : `/${locale}/privacy`}
-                className="text-xs text-gray-500 hover:text-hs-blue transition-colors underline underline-offset-2"
+                className="text-xs text-muted-foreground hover:text-hs-blue transition-colors underline underline-offset-2"
               >
                 {t.privacy}
               </a>

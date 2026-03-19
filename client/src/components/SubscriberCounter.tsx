@@ -1,5 +1,4 @@
 /*
- * Design: Midnight Tech — Dark Luxury Editorial
  * SubscriberCounter: Dynamic social proof counter — i18n enabled
  */
 import { useAnimatedCounter } from "@/hooks/useAnimatedCounter";
@@ -21,7 +20,7 @@ export default function SubscriberCounter() {
       <Users className="w-4 h-4 text-hs-blue" />
       <p className="text-sm">
         {t.counter.prefix}{" "}
-        <span className="text-white font-semibold tabular-nums">
+        <span className="text-foreground font-semibold tabular-nums">
           {formattedCount}
         </span>{" "}
         {t.counter.suffix}

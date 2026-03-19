@@ -87,18 +87,18 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         }
       >
         <div className="flex flex-col items-center gap-3 text-center">
-          <div className="w-14 h-14 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center">
-            <CheckCircle2 className="w-7 h-7 text-emerald-400" />
+          <div className={`w-14 h-14 rounded-full flex items-center justify-center ${variant === "compact" ? "bg-emerald-500/15 border border-emerald-400/30" : "bg-emerald-100 border border-emerald-200"}`}>
+            <CheckCircle2 className={`w-7 h-7 ${variant === "compact" ? "text-emerald-400" : "text-emerald-600"}`} />
           </div>
-          <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
+          <h3 className={`font-display text-xl sm:text-2xl font-bold ${variant === "compact" ? "text-white" : "text-foreground"}`}>
             {t.form.successTitle}
           </h3>
-          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed max-w-md">
+          <p className={`text-sm sm:text-base leading-relaxed max-w-md ${variant === "compact" ? "text-blue-100/70" : "text-muted-foreground"}`}>
             {t.form.successMessage}{" "}
-            <span className="text-hs-amber font-semibold">{t.form.successCode}</span>{" "}
+            <span className={`font-semibold ${variant === "compact" ? "text-amber-300" : "text-hs-gold"}`}>{t.form.successCode}</span>{" "}
             {t.form.successDate}
           </p>
-          <p className="text-xs text-muted-foreground/70 mt-1">
+          <p className={`text-xs mt-1 ${variant === "compact" ? "text-white/40" : "text-muted-foreground/70"}`}>
             {t.form.successConfirm}
           </p>
         </div>
@@ -109,10 +109,10 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
   // ── COMPACT VARIANT (hero) ──
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit} className="w-full max-w-lg" noValidate>
+      <form onSubmit={handleSubmit} className="w-full max-w-md ml-auto" noValidate>
         <div className="flex flex-col gap-2.5">
-          {/* Input row */}
-          <div className="flex flex-col sm:flex-row gap-2.5">
+          {/* Input fields — stacked */}
+          <div className="flex flex-col gap-2.5">
             <div className="flex-1 min-w-0">
               <input
                 type="text"
@@ -121,8 +121,8 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
                 placeholder={t.form.namePlaceholder}
                 aria-label={t.form.namePlaceholder}
                 aria-invalid={!!fieldErrors.name}
-                className={`w-full h-11 rounded-xl bg-white/[0.07] backdrop-blur-sm border px-4 text-sm text-white placeholder:text-muted-foreground/60 outline-none transition-all focus:bg-white/[0.1] focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 ${
-                  fieldErrors.name ? "border-red-500/60" : "border-white/[0.12]"
+                className={`w-full h-11 rounded-xl bg-white border px-4 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 shadow-sm ${
+                  fieldErrors.name ? "border-red-400" : "border-border"
                 }`}
               />
             </div>
@@ -134,8 +134,8 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
                 placeholder={t.form.placeholder}
                 aria-label={t.form.placeholder}
                 aria-invalid={!!fieldErrors.email}
-                className={`w-full h-11 rounded-xl bg-white/[0.07] backdrop-blur-sm border px-4 text-sm text-white placeholder:text-muted-foreground/60 outline-none transition-all focus:bg-white/[0.1] focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 ${
-                  fieldErrors.email ? "border-red-500/60" : "border-white/[0.12]"
+                className={`w-full h-11 rounded-xl bg-white border px-4 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 shadow-sm ${
+                  fieldErrors.email ? "border-red-400" : "border-border"
                 }`}
               />
             </div>
@@ -145,7 +145,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="group h-11 rounded-xl bg-hs-blue text-white font-display font-semibold text-sm sm:text-base px-6 flex items-center justify-center gap-2 transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed cta-pulse"
+            className="group h-11 rounded-xl bg-hs-blue text-white font-display font-semibold text-sm sm:text-base px-6 flex items-center justify-center gap-2 transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed cta-pulse shadow-md"
           >
             {status === "submitting" ? (
               <>
@@ -170,7 +170,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
               exit={{ opacity: 0, height: 0 }}
               className="overflow-hidden"
             >
-              <p className="text-red-400 text-xs mt-2 text-center">
+              <p className="text-red-300 text-xs mt-2 text-center">
                 {fieldErrors.name || fieldErrors.email}
               </p>
             </motion.div>
@@ -188,16 +188,16 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
             >
               <div className="flex items-center justify-center gap-2 mt-2">
                 <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                <p className="text-amber-400 text-xs">{t.form.errorDuplicate}</p>
+                <p className="text-amber-300 text-xs">{t.form.errorDuplicate}</p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Privacy notice */}
-        <p className="text-[11px] text-muted-foreground/50 mt-3 text-center leading-relaxed">
+        <p className="text-[11px] text-white/40 mt-3 text-center leading-relaxed">
           {t.form.privacy}{" "}
-          <a href={privacyHref} className="underline underline-offset-2 hover:text-muted-foreground transition-colors">
+          <a href={privacyHref} className="underline underline-offset-2 hover:text-white/70 transition-colors">
             {t.form.privacyLink}
           </a>
         </p>
@@ -218,8 +218,8 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
             placeholder={t.form.namePlaceholder}
             aria-label={t.form.namePlaceholder}
             aria-invalid={!!fieldErrors.name}
-            className={`w-full h-12 rounded-xl bg-white/[0.06] backdrop-blur-sm border px-5 text-sm text-white placeholder:text-muted-foreground/50 outline-none transition-all focus:bg-white/[0.1] focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 ${
-              fieldErrors.name ? "border-red-500/60" : "border-white/[0.1]"
+            className={`w-full h-12 rounded-xl bg-white border px-5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 shadow-sm ${
+              fieldErrors.name ? "border-red-400" : "border-border"
             }`}
           />
           <AnimatePresence>
@@ -228,7 +228,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="text-red-400 text-xs mt-1.5 ml-1 overflow-hidden"
+                className="text-red-500 text-xs mt-1.5 ml-1 overflow-hidden"
               >
                 {fieldErrors.name}
               </motion.p>
@@ -245,8 +245,8 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
             placeholder={t.form.placeholder}
             aria-label={t.form.placeholder}
             aria-invalid={!!fieldErrors.email}
-            className={`w-full h-12 rounded-xl bg-white/[0.06] backdrop-blur-sm border px-5 text-sm text-white placeholder:text-muted-foreground/50 outline-none transition-all focus:bg-white/[0.1] focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 ${
-              fieldErrors.email ? "border-red-500/60" : "border-white/[0.1]"
+            className={`w-full h-12 rounded-xl bg-white border px-5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none transition-all focus:border-hs-blue focus:ring-2 focus:ring-hs-blue/20 shadow-sm ${
+              fieldErrors.email ? "border-red-400" : "border-border"
             }`}
           />
           <AnimatePresence>
@@ -255,7 +255,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="text-red-400 text-xs mt-1.5 ml-1 overflow-hidden"
+                className="text-red-500 text-xs mt-1.5 ml-1 overflow-hidden"
               >
                 {fieldErrors.email}
               </motion.p>
@@ -267,7 +267,7 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="group h-12 rounded-xl bg-hs-blue text-white font-display font-semibold text-base px-6 flex items-center justify-center gap-2.5 transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed cta-pulse mt-1"
+          className="group h-12 rounded-xl bg-hs-blue text-white font-display font-semibold text-base px-6 flex items-center justify-center gap-2.5 transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed cta-pulse mt-1 shadow-md"
         >
           {status === "submitting" ? (
             <>
@@ -292,18 +292,18 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
             exit={{ opacity: 0, height: 0 }}
             className="overflow-hidden"
           >
-            <div className="flex items-center justify-center gap-2 mt-3 bg-amber-500/10 border border-amber-500/20 rounded-lg px-4 py-2.5">
-              <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
-              <p className="text-amber-400 text-sm">{t.form.errorDuplicate}</p>
+            <div className="flex items-center justify-center gap-2 mt-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5">
+              <AlertTriangle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+              <p className="text-amber-600 text-sm">{t.form.errorDuplicate}</p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Privacy notice */}
-      <p className="text-[11px] text-muted-foreground/50 mt-4 text-center leading-relaxed">
+      <p className="text-[11px] text-muted-foreground/60 mt-4 text-center leading-relaxed">
         {t.form.privacy}{" "}
-        <a href={privacyHref} className="underline underline-offset-2 hover:text-muted-foreground transition-colors">
+        <a href={privacyHref} className="underline underline-offset-2 hover:text-foreground transition-colors">
           {t.form.privacyLink}
         </a>
       </p>

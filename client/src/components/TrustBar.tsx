@@ -1,5 +1,4 @@
 /*
- * Design: Midnight Tech — Dark Luxury Editorial
  * TrustBar: Horizontal trust signals bar with 6 key selling points — i18n enabled
  */
 import { Percent, Shield, Truck, Headphones, RotateCcw, ArrowLeftRight } from "lucide-react";
@@ -18,7 +17,7 @@ export default function TrustBar() {
   ];
 
   return (
-    <div className="w-full border-y border-border/40 bg-hs-navy-light/50 backdrop-blur-sm">
+    <div className="w-full border-y border-border bg-muted/50">
       <div className="container py-4 sm:py-5">
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-10">
           {trustItems.map((item) => (

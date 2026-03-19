@@ -1,5 +1,4 @@
 /*
- * Design: Midnight Tech — Dark Luxury Editorial
  * FloatingCTA: Persistent floating button — i18n enabled
  */
 import { useState, useEffect } from "react";
@@ -37,7 +36,7 @@ export default function FloatingCTA() {
           exit={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.3 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-50 bg-hs-blue hover:bg-hs-blue/90 text-white font-display font-bold px-5 py-3 rounded-full shadow-lg shadow-hs-blue/25 flex items-center gap-2 text-sm cta-pulse transition-colors"
+          className="fixed bottom-6 right-6 z-50 bg-hs-blue hover:bg-hs-blue/90 text-white font-display font-bold px-5 py-3 rounded-full shadow-lg shadow-hs-blue/20 flex items-center gap-2 text-sm cta-pulse transition-colors"
         >
           <ArrowUp className="w-4 h-4" />
           {t.floatingCta}

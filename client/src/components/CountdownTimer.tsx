@@ -1,5 +1,4 @@
 /*
- * Design: Midnight Tech — Dark Luxury Editorial
  * CountdownTimer: Mechanical flip-style countdown to May 1, 2026 launch — i18n enabled
  */
 import { useCountdown } from "@/hooks/useCountdown";
@@ -10,11 +9,10 @@ const LAUNCH_DATE = new Date("2026-05-01T00:00:00+02:00");
 function CountdownUnit({ value, label }: { value: number; label: string }) {
   return (
     <div className="flex flex-col items-center gap-2">
-      <div className="relative bg-hs-navy-light border border-border/50 rounded-xl w-[72px] h-[80px] sm:w-[88px] sm:h-[96px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-white/[0.03] to-transparent" />
+      <div className="relative bg-white border border-border rounded-xl w-[72px] h-[80px] sm:w-[88px] sm:h-[96px] flex items-center justify-center overflow-hidden shadow-sm">
         <span
           key={value}
-          className="font-display text-3xl sm:text-4xl font-bold text-white count-tick tabular-nums"
+          className="font-display text-3xl sm:text-4xl font-bold text-foreground count-tick tabular-nums"
         >
           {String(value).padStart(2, "0")}
         </span>
