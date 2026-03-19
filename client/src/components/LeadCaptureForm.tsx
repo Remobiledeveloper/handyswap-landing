@@ -7,8 +7,7 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, AlertTriangle } from "lucide-react";
 
-// TODO: Replace with your actual form submission endpoint
-const FORM_ENDPOINT = "https://example.com/api/leads";
+const FORM_ENDPOINT = "https://handyswap-landing.attractgroup.com/";
 
 type FormStatus = "idle" | "submitting" | "success" | "error-duplicate" | "error";
 
@@ -49,22 +48,25 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         body: JSON.stringify({
           name: name.trim(),
           email: email.toLowerCase().trim(),
-          locale,
         }),
       });
 
-      if (res.status === 409) {
-        setStatus("error-duplicate");
+      if (res.status === 429) {
+        setStatus("error");
         return;
       }
 
-      if (!res.ok) throw new Error("Submit failed");
+      const data = await res.json();
 
-      setStatus("success");
+      if (data.success) {
+        setStatus("success");
+      } else if (data.details?.email?.includes("has already been taken")) {
+        setStatus("error-duplicate");
+      } else {
+        setStatus("error");
+      }
     } catch {
-      // For now, treat as success since we're using a placeholder endpoint
-      // TODO: Remove this fallback once real Shopify endpoint is connected
-      setStatus("success");
+      setStatus("error");
     }
   }
 
