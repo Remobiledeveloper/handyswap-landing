@@ -401,7 +401,7 @@ export default function Shipping() {
               <h2 className="text-xl font-bold font-display text-hs-blue">{t.commitTitle}</h2>
             </div>
             <div className="bg-gradient-to-br from-hs-blue/10 to-white/5 border border-hs-blue/20 rounded-xl p-6">
-              <p className="text-gray-200 text-sm leading-relaxed">{t.commitText}</p>
+              <p className="text-foreground text-sm leading-relaxed">{t.commitText}</p>
             </div>
           </section>
         </div>

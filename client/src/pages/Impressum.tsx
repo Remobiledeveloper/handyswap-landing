@@ -210,7 +210,7 @@ export default function Impressum() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.disclaimer}</h2>
             <div className="bg-muted border border-border rounded-xl p-6">
-              <p className="text-gray-300 text-sm leading-relaxed">{t.disclaimerText}</p>
+              <p className="text-foreground text-sm leading-relaxed">{t.disclaimerText}</p>
             </div>
           </section>
 
@@ -218,7 +218,7 @@ export default function Impressum() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.accessibility}</h2>
             <div className="bg-muted border border-border rounded-xl p-6">
-              <p className="text-gray-300 text-sm mb-3">{t.accessibilityText}</p>
+              <p className="text-foreground text-sm mb-3">{t.accessibilityText}</p>
               <div className="space-y-1">
                 <p className="text-sm">
                   <span className="text-muted-foreground">{t.email}: </span>
@@ -236,7 +236,7 @@ export default function Impressum() {
           <section className="mb-10">
             <h2 className="text-xl font-bold font-display text-hs-blue mb-4">{t.updates}</h2>
             <div className="bg-muted border border-border rounded-xl p-6">
-              <p className="text-gray-300 text-sm leading-relaxed">{t.updatesText}</p>
+              <p className="text-foreground text-sm leading-relaxed">{t.updatesText}</p>
             </div>
           </section>
         </div>
