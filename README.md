@@ -1,1 +1,1 @@
-Handyswap landing page project. 
+Handyswap landing page project
