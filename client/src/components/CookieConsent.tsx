@@ -1,48 +1,56 @@
 /**
  * CookieConsent.tsx
- * GDPR-compliant cookie consent banner for Handyswap.com
- * Slides up from bottom — supports DE/EN/NL via LocaleContext
+ * Consent banner for non-essential tracking services on Handyswap.com
+ * Opens automatically until a choice is made and can be reopened later
  */
 
 import { useState, useEffect } from "react";
 import { useLocale } from "@/contexts/LocaleContext";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  CONSENT_OPEN_EVENT,
+  getStoredConsent,
+  setConsent,
+} from "@/lib/consent";
 
 const translations = {
   de: {
     title: "Cookie-Einstellungen",
     message:
-      "Wir verwenden Cookies, um dein Erlebnis auf unserer Website zu verbessern und anonyme Nutzungsstatistiken zu erheben. Du kannst selbst entscheiden, welche Cookies du zulassen möchtest.",
+      "Wir verwenden nur notwendige Technologien standardmäßig. Google Tag Manager und Umami werden erst nach deiner Einwilligung geladen, um Reichweite und Kampagnen datenschutzkonform zu messen.",
     essential: "Notwendige Cookies",
     essentialDesc: "Erforderlich für die grundlegende Funktionalität der Website.",
-    analytics: "Analyse-Cookies",
-    analyticsDesc: "Helfen uns zu verstehen, wie Besucher unsere Website nutzen.",
-    accept: "Alle akzeptieren",
+    tracking: "Analyse- & Marketingdienste",
+    trackingDesc: "Google Tag Manager und Umami helfen uns, Besuche, Kampagnen und Formular-Performance zu verstehen.",
+    accept: "Tracking erlauben",
     decline: "Nur notwendige",
+    close: "Schließen",
     privacy: "Datenschutzerklärung",
   },
   en: {
     title: "Cookie Settings",
     message:
-      "We use cookies to improve your experience on our website and collect anonymous usage statistics. You can choose which cookies you want to allow.",
+      "We only use necessary technologies by default. Google Tag Manager and Umami load only after your consent so we can measure traffic and campaigns in a privacy-conscious way.",
     essential: "Essential Cookies",
     essentialDesc: "Required for basic website functionality.",
-    analytics: "Analytics Cookies",
-    analyticsDesc: "Help us understand how visitors use our website.",
-    accept: "Accept All",
+    tracking: "Analytics & Marketing Services",
+    trackingDesc: "Google Tag Manager and Umami help us understand visits, campaigns, and form performance.",
+    accept: "Allow Tracking",
     decline: "Essential Only",
+    close: "Close",
     privacy: "Privacy Policy",
   },
   nl: {
     title: "Cookie-instellingen",
     message:
-      "We gebruiken cookies om je ervaring op onze website te verbeteren en anonieme gebruiksstatistieken te verzamelen. Je kunt zelf kiezen welke cookies je wilt toestaan.",
+      "We gebruiken standaard alleen noodzakelijke technologieen. Google Tag Manager en Umami laden pas na jouw toestemming zodat we verkeer en campagnes privacyvriendelijk kunnen meten.",
     essential: "Noodzakelijke cookies",
     essentialDesc: "Vereist voor de basisfunctionaliteit van de website.",
-    analytics: "Analytische cookies",
-    analyticsDesc: "Helpen ons te begrijpen hoe bezoekers onze website gebruiken.",
-    accept: "Alles accepteren",
+    tracking: "Analyse- en marketingdiensten",
+    trackingDesc: "Google Tag Manager en Umami helpen ons bezoeken, campagnes en formulierprestaties te begrijpen.",
+    accept: "Tracking toestaan",
     decline: "Alleen noodzakelijke",
+    close: "Sluiten",
     privacy: "Privacybeleid",
   },
 };
@@ -51,22 +59,40 @@ export default function CookieConsent() {
   const { locale } = useLocale();
   const t = translations[locale];
   const [visible, setVisible] = useState(false);
+  const [hasSavedConsent, setHasSavedConsent] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem("hs-cookie-consent");
+    const consent = getStoredConsent();
+    setHasSavedConsent(Boolean(consent));
+
     if (!consent) {
       const timer = setTimeout(() => setVisible(true), 1200);
       return () => clearTimeout(timer);
     }
   }, []);
 
+  useEffect(() => {
+    const handleOpenSettings = () => {
+      setHasSavedConsent(Boolean(getStoredConsent()));
+      setVisible(true);
+    };
+
+    window.addEventListener(CONSENT_OPEN_EVENT, handleOpenSettings);
+
+    return () => {
+      window.removeEventListener(CONSENT_OPEN_EVENT, handleOpenSettings);
+    };
+  }, []);
+
   const handleAccept = () => {
-    localStorage.setItem("hs-cookie-consent", "all");
+    setConsent("all");
+    setHasSavedConsent(true);
     setVisible(false);
   };
 
   const handleDecline = () => {
-    localStorage.setItem("hs-cookie-consent", "essential");
+    setConsent("essential");
+    setHasSavedConsent(true);
     setVisible(false);
   };
 
@@ -78,6 +104,8 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
+          role="dialog"
+          aria-modal="true"
           className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-6"
         >
           <div className="max-w-3xl mx-auto bg-white/95 backdrop-blur-xl border border-border rounded-2xl p-6 md:p-8 shadow-2xl shadow-black/10">
@@ -137,10 +165,10 @@ export default function CookieConsent() {
                 <div className="mt-0.5 w-4 h-4 rounded border border-hs-blue/50 bg-hs-blue-light flex-shrink-0" />
                 <div>
                   <span className="text-sm font-semibold text-foreground">
-                    {t.analytics}
+                    {t.tracking}
                   </span>
                   <p className="text-xs text-muted-foreground mt-0.5">
-                    {t.analyticsDesc}
+                    {t.trackingDesc}
                   </p>
                 </div>
               </div>
@@ -160,6 +188,14 @@ export default function CookieConsent() {
               >
                 {t.decline}
               </button>
+              {hasSavedConsent && (
+                <button
+                  onClick={() => setVisible(false)}
+                  className="px-6 py-3 text-muted-foreground hover:text-foreground font-semibold text-sm rounded-lg transition-colors"
+                >
+                  {t.close}
+                </button>
+              )}
             </div>
 
             {/* Privacy link */}

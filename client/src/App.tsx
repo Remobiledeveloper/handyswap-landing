@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LocaleProvider } from "./contexts/LocaleContext";
 import Home from "./pages/Home";
 import CookieConsent from "./components/CookieConsent";
+import CookieSettingsButton from "./components/CookieSettingsButton";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import Shipping from "./pages/Shipping";
@@ -47,6 +48,7 @@ function App() {
             <Toaster />
             <Router />
             <CookieConsent />
+            <CookieSettingsButton />
           </TooltipProvider>
         </LocaleProvider>
       </ThemeProvider>

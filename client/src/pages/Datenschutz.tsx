@@ -6,6 +6,7 @@
  */
 
 import { useLocale } from "@/contexts/LocaleContext";
+import { openConsentSettings } from "@/lib/consent";
 import { ArrowLeft } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
@@ -16,9 +17,13 @@ const translations = {
   /* ======================== ENGLISH ======================== */
   en: {
     title: "Privacy Policy",
-    effectiveDate: "Last Updated: 1 November 2025",
+    effectiveDate: "Last Updated: 26 March 2026",
     backToHome: "Back to Home",
     intro: 'Remobile 786 SL ("HandySwap," "we," "us") is committed to protecting your personal data and your privacy rights. This policy outlines how we handle the data collected through your use of handyswap.com, and in connection with our 30-day returns and 24-month warranty service.',
+    consentNoticeTitle: "Cookie Preferences",
+    consentNoticeText:
+      "You can review or change your consent for Google Tag Manager and Umami at any time. These optional measurement services load only after your opt-in.",
+    consentSettingsCta: "Open Cookie Settings",
 
     s1Title: "1. Introduction — Scope & Purpose",
     s1Intro: 'Remobile 786 SL ("HandySwap", "we", "us") respects your privacy and is committed to protecting your personal data when you:',
@@ -75,7 +80,8 @@ const translations = {
         icon: "🖥️",
         heading: "Device & Technical Data",
         items: [
-          "IP address, device/browser fingerprint, cookies, analytics data, crash logs",
+          "IP address, device/browser data, consent preferences, and crash logs",
+          "If you opt in, measurement data collected through Google Tag Manager and Umami",
         ],
       },
       {
@@ -100,7 +106,7 @@ const translations = {
       "Contract performance — to process orders, payments, returns, and 24-month warranty claims",
       "Legal obligation — invoices, tax records, fiscal and consumer law compliance",
       "Legitimate interests — fraud prevention, dispute handling, network & information security",
-      "Consent — non-essential cookies, marketing emails, optional features",
+      "Consent — Google Tag Manager, Umami, non-essential cookies, marketing emails, and optional features",
       "Vital interests / public interest — strictly necessary cases only",
     ],
     s3Note: "We will inform you which legal basis applies when we collect specific data.",
@@ -113,7 +119,7 @@ const translations = {
       "Customer support — investigate issues, maintain support records for quality and disputes",
       "Fraud prevention & security — detect and prevent fraud or abuse",
       "Marketing & personalization — send promotional emails and offers (with consent)",
-      "Analytics & product improvement — anonymous/aggregated data for service improvement",
+      "Analytics & product improvement — with your consent, we use Google Tag Manager and Umami to measure visits, campaigns, and form performance",
       "Legal & regulatory compliance — tax, accounting, consumer rights, legal claims",
     ],
     s4Note: "Key point: warranty claims and returns require storing diagnostic & service records to perform repairs or resolve disputes.",
@@ -125,6 +131,7 @@ const translations = {
       "Carriers & couriers (deliveries & returns)",
       "Repair centres & service partners",
       "IT & hosting providers (cloud, backups, email)",
+      "Analytics and tag management providers (Google Tag Manager and Umami), only if you consent",
       "Fraud prevention & analytics providers",
       "Legal & regulatory authorities when required",
     ],
@@ -139,7 +146,7 @@ const translations = {
       "Warranty & repair records: 24 months + up to 4 additional years if needed (max 6 years in exceptional cases)",
       "Returns & refunds: until case closure + relevant legal/tax period",
       "Support tickets: 24 months after case closure",
-      "Cookies & analytics: session cookies expire at session end; analytics identifiers up to 24 months",
+      "Cookies & analytics: session cookies expire at session end; consent records and analytics identifiers may be retained for up to 24 months where applicable",
       "Marketing consents: until withdrawn or activity ends",
     ],
     s6Note: "Retention aligns with GDPR principles and legal obligations.",
@@ -161,6 +168,7 @@ const translations = {
       "Object to processing based on legitimate interests",
       "Request data portability",
       "Withdraw consent at any time",
+      "Reopen Cookie Settings on the website to withdraw or change optional tracking consent",
     ],
     s8Exercise: "To exercise your rights: support@handyswap.com with proof of identity.",
 
@@ -205,9 +213,13 @@ const translations = {
   /* ======================== GERMAN ======================== */
   de: {
     title: "Datenschutzerklärung",
-    effectiveDate: "Zuletzt aktualisiert: 1. November 2025",
+    effectiveDate: "Zuletzt aktualisiert: 26. März 2026",
     backToHome: "Zurück zur Startseite",
     intro: 'Remobile 786 SL („HandySwap", „wir", „uns") verpflichtet sich zum Schutz Ihrer personenbezogenen Daten und Ihrer Datenschutzrechte. Diese Richtlinie beschreibt, wie wir die Daten verarbeiten, die durch Ihre Nutzung von handyswap.com und im Zusammenhang mit unserem 30-Tage-Rückgaberecht und 24-Monats-Garantieservice erhoben werden.',
+    consentNoticeTitle: "Cookie-Einstellungen",
+    consentNoticeText:
+      "Sie können Ihre Einwilligung für Google Tag Manager und Umami jederzeit prüfen oder ändern. Diese optionalen Messdienste werden erst nach Ihrem Opt-in geladen.",
+    consentSettingsCta: "Cookie-Einstellungen öffnen",
 
     s1Title: "1. Einleitung — Geltungsbereich & Zweck",
     s1Intro: 'Remobile 786 SL („HandySwap", „wir", „uns") respektiert Ihre Privatsphäre und verpflichtet sich zum Schutz Ihrer personenbezogenen Daten, wenn Sie:',
@@ -264,7 +276,8 @@ const translations = {
         icon: "🖥️",
         heading: "Geräte- & technische Daten",
         items: [
-          "IP-Adresse, Geräte-/Browser-Fingerabdruck, Cookies, Analysedaten, Absturzprotokolle",
+          "IP-Adresse, Geräte-/Browserdaten, Einwilligungspräferenzen und Absturzprotokolle",
+          "Bei Ihrer Einwilligung: Messdaten über Google Tag Manager und Umami",
         ],
       },
       {
@@ -289,7 +302,7 @@ const translations = {
       "Vertragserfüllung — zur Bearbeitung von Bestellungen, Zahlungen, Rücksendungen und 24-Monats-Garantieansprüchen",
       "Gesetzliche Verpflichtung — Rechnungen, Steuerunterlagen, Einhaltung von Steuer- und Verbraucherrecht",
       "Berechtigte Interessen — Betrugsprävention, Streitbeilegung, Netzwerk- und Informationssicherheit",
-      "Einwilligung — nicht-essenzielle Cookies, Marketing-E-Mails, optionale Funktionen",
+      "Einwilligung — Google Tag Manager, Umami, nicht-essenzielle Cookies, Marketing-E-Mails und optionale Funktionen",
       "Lebenswichtige Interessen / öffentliches Interesse — nur in streng notwendigen Fällen",
     ],
     s3Note: "Wir informieren Sie darüber, welche Rechtsgrundlage gilt, wenn wir bestimmte Daten erheben.",
@@ -302,7 +315,7 @@ const translations = {
       "Kundensupport — Probleme untersuchen, Support-Aufzeichnungen für Qualität und Streitfälle führen",
       "Betrugsprävention & Sicherheit — Betrug oder Missbrauch erkennen und verhindern",
       "Marketing & Personalisierung — Werbe-E-Mails und Angebote senden (mit Einwilligung)",
-      "Analysen & Produktverbesserung — anonyme/aggregierte Daten zur Serviceverbesserung",
+      "Analysen & Produktverbesserung — mit Ihrer Einwilligung nutzen wir Google Tag Manager und Umami, um Besuche, Kampagnen und Formular-Performance zu messen",
       "Rechtliche & regulatorische Compliance — Steuern, Buchhaltung, Verbraucherrechte, Rechtsansprüche",
     ],
     s4Note: "Wichtiger Hinweis: Garantieansprüche und Rücksendungen erfordern die Speicherung von Diagnose- und Serviceaufzeichnungen zur Durchführung von Reparaturen oder Beilegung von Streitigkeiten.",
@@ -314,6 +327,7 @@ const translations = {
       "Spediteure & Kuriere (Lieferungen & Rücksendungen)",
       "Reparaturzentren & Servicepartner",
       "IT- & Hosting-Anbieter (Cloud, Backups, E-Mail)",
+      "Analyse- und Tag-Management-Anbieter (Google Tag Manager und Umami), nur nach Ihrer Einwilligung",
       "Betrugspräventions- & Analyseanbieter",
       "Rechts- & Aufsichtsbehörden, wenn gesetzlich erforderlich",
     ],
@@ -328,7 +342,7 @@ const translations = {
       "Garantie- & Reparaturaufzeichnungen: 24 Monate + bis zu 4 weitere Jahre bei Bedarf (max. 6 Jahre in Ausnahmefällen)",
       "Rücksendungen & Erstattungen: bis zum Fallabschluss + relevante gesetzliche/steuerliche Frist",
       "Support-Tickets: 24 Monate nach Fallabschluss",
-      "Cookies & Analysen: Sitzungscookies verfallen am Sitzungsende; Analyse-Identifikatoren bis zu 24 Monate",
+      "Cookies & Analysen: Sitzungscookies verfallen am Sitzungsende; Einwilligungsnachweise und Analyse-Identifikatoren werden, soweit einschlägig, bis zu 24 Monate gespeichert",
       "Marketing-Einwilligungen: bis zum Widerruf oder Ende der Aktivität",
     ],
     s6Note: "Die Aufbewahrung entspricht den DSGVO-Grundsätzen und gesetzlichen Verpflichtungen.",
@@ -350,6 +364,7 @@ const translations = {
       "Der Verarbeitung auf Grundlage berechtigter Interessen widersprechen",
       "Datenübertragbarkeit verlangen",
       "Ihre Einwilligung jederzeit widerrufen",
+      "Cookie-Einstellungen auf der Website erneut öffnen, um optionale Tracking-Einwilligungen zu widerrufen oder anzupassen",
     ],
     s8Exercise: "Zur Ausübung Ihrer Rechte: support@handyswap.com mit Identitätsnachweis.",
 
@@ -394,9 +409,13 @@ const translations = {
   /* ======================== DUTCH ======================== */
   nl: {
     title: "Privacybeleid",
-    effectiveDate: "Laatst bijgewerkt: 1 november 2025",
+    effectiveDate: "Laatst bijgewerkt: 26 maart 2026",
     backToHome: "Terug naar Home",
     intro: 'Remobile 786 SL ("HandySwap", "wij", "ons") zet zich in voor de bescherming van uw persoonsgegevens en uw privacyrechten. Dit beleid beschrijft hoe wij omgaan met de gegevens die worden verzameld via uw gebruik van handyswap.com, en in verband met onze 30-dagen retourservice en 24-maanden garantieservice.',
+    consentNoticeTitle: "Cookie-instellingen",
+    consentNoticeText:
+      "U kunt uw toestemming voor Google Tag Manager en Umami op elk moment bekijken of wijzigen. Deze optionele meetdiensten laden pas na uw opt-in.",
+    consentSettingsCta: "Cookie-instellingen openen",
 
     s1Title: "1. Inleiding — Reikwijdte & Doel",
     s1Intro: 'Remobile 786 SL ("HandySwap", "wij", "ons") respecteert uw privacy en zet zich in voor de bescherming van uw persoonsgegevens wanneer u:',
@@ -453,7 +472,8 @@ const translations = {
         icon: "🖥️",
         heading: "Apparaat- & Technische Gegevens",
         items: [
-          "IP-adres, apparaat-/browserfingerprint, cookies, analysegegevens, crashlogboeken",
+          "IP-adres, apparaat-/browsergegevens, toestemmingsvoorkeuren en crashlogboeken",
+          "Als u toestemming geeft: meetgegevens via Google Tag Manager en Umami",
         ],
       },
       {
@@ -478,7 +498,7 @@ const translations = {
       "Uitvoering van overeenkomst — om bestellingen, betalingen, retourzendingen en 24-maanden garantieclaims te verwerken",
       "Wettelijke verplichting — facturen, belastingdocumenten, naleving van fiscaal en consumentenrecht",
       "Gerechtvaardigde belangen — fraudepreventie, geschillenbeslechting, netwerk- en informatiebeveiliging",
-      "Toestemming — niet-essentiële cookies, marketing-e-mails, optionele functies",
+      "Toestemming — Google Tag Manager, Umami, niet-essentiele cookies, marketing-e-mails en optionele functies",
       "Vitale belangen / algemeen belang — alleen in strikt noodzakelijke gevallen",
     ],
     s3Note: "Wij informeren u welke rechtsgrondslag van toepassing is wanneer wij specifieke gegevens verzamelen.",
@@ -491,7 +511,7 @@ const translations = {
       "Klantenservice — problemen onderzoeken, supportrecords bijhouden voor kwaliteit en geschillen",
       "Fraudepreventie & beveiliging — fraude of misbruik detecteren en voorkomen",
       "Marketing & personalisatie — promotionele e-mails en aanbiedingen versturen (met toestemming)",
-      "Analyse & productverbetering — anonieme/geaggregeerde gegevens voor serviceverbetering",
+      "Analyse & productverbetering — met uw toestemming gebruiken we Google Tag Manager en Umami om bezoeken, campagnes en formulierprestaties te meten",
       "Juridische & regelgevende naleving — belastingen, boekhouding, consumentenrechten, rechtsvorderingen",
     ],
     s4Note: "Belangrijk: garantieclaims en retourzendingen vereisen het opslaan van diagnose- en servicerecords om reparaties uit te voeren of geschillen op te lossen.",
@@ -503,6 +523,7 @@ const translations = {
       "Vervoerders & koeriers (leveringen & retourzendingen)",
       "Reparatiecentra & servicepartners",
       "IT- & hostingproviders (cloud, back-ups, e-mail)",
+      "Analyse- en tagmanagementproviders (Google Tag Manager en Umami), alleen als u toestemming geeft",
       "Fraudepreventie- & analyseproviders",
       "Juridische & toezichthoudende autoriteiten wanneer wettelijk vereist",
     ],
@@ -517,7 +538,7 @@ const translations = {
       "Garantie- & reparatierecords: 24 maanden + tot 4 extra jaren indien nodig (max. 6 jaar in uitzonderlijke gevallen)",
       "Retourzendingen & terugbetalingen: tot sluiting van het dossier + relevante wettelijke/fiscale periode",
       "Supporttickets: 24 maanden na sluiting van het dossier",
-      "Cookies & analyse: sessiecookies vervallen aan het einde van de sessie; analyse-identificatoren tot 24 maanden",
+      "Cookies & analyse: sessiecookies vervallen aan het einde van de sessie; toestemmingsregistraties en analyse-ID's bewaren we waar relevant tot 24 maanden",
       "Marketingtoestemmingen: tot intrekking of einde van activiteit",
     ],
     s6Note: "Bewaring is in overeenstemming met AVG-principes en wettelijke verplichtingen.",
@@ -539,6 +560,7 @@ const translations = {
       "Bezwaar maken tegen verwerking op basis van gerechtvaardigde belangen",
       "Gegevensoverdraagbaarheid verzoeken",
       "Uw toestemming op elk moment intrekken",
+      "Cookie-instellingen op de website opnieuw openen om optionele trackingtoestemming in te trekken of te wijzigen",
     ],
     s8Exercise: "Om uw rechten uit te oefenen: support@handyswap.com met identiteitsbewijs.",
 
@@ -647,6 +669,28 @@ export default function Datenschutz() {
           <h1 className="text-3xl md:text-4xl font-bold font-display mb-2">{t.title}</h1>
           <p className="text-muted-foreground text-xs mb-6">{t.effectiveDate}</p>
           <p className="text-muted-foreground text-sm leading-relaxed mb-10">{t.intro}</p>
+
+          <section className="mb-10">
+            <SectionCard>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="mb-2 text-base font-bold font-display text-foreground">
+                    {t.consentNoticeTitle}
+                  </h2>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {t.consentNoticeText}
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={openConsentSettings}
+                  className="inline-flex items-center justify-center rounded-lg bg-hs-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-hs-blue/90"
+                >
+                  {t.consentSettingsCta}
+                </button>
+              </div>
+            </SectionCard>
+          </section>
 
           {/* 1. Introduction */}
           <section className="mb-10">

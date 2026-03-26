@@ -2,6 +2,140 @@
 <html lang="de">
 
   <head>
+    <script>
+      window.hsConsentManager = (function () {
+        var CONSENT_KEY = "hs-cookie-consent";
+        var GTM_ID = "GTM-M2BLVCH6";
+        var UMAMI_ENDPOINT = "%VITE_ANALYTICS_ENDPOINT%";
+        var UMAMI_WEBSITE_ID = "%VITE_ANALYTICS_WEBSITE_ID%";
+        var GRANTED = {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+          analytics_storage: "granted"
+        };
+        var DENIED = {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied"
+        };
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag =
+          window.gtag ||
+          function gtag() {
+            window.dataLayer.push(arguments);
+          };
+
+        window.gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+          wait_for_update: 500
+        });
+
+        function readConsent() {
+          try {
+            var consent = window.localStorage.getItem(CONSENT_KEY);
+            return consent === "all" || consent === "essential" ? consent : null;
+          } catch (error) {
+            return null;
+          }
+        }
+
+        function dispatch(name, detail) {
+          window.dispatchEvent(new CustomEvent(name, { detail: detail }));
+        }
+
+        function loadGtm() {
+          if (window.__hsGtmLoaded) {
+            return;
+          }
+
+          window.__hsGtmLoaded = true;
+          window.dataLayer.push({
+            "gtm.start": new Date().getTime(),
+            event: "gtm.js"
+          });
+
+          var firstScript = document.getElementsByTagName("script")[0];
+          var script = document.createElement("script");
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtm.js?id=" + GTM_ID;
+
+          if (firstScript && firstScript.parentNode) {
+            firstScript.parentNode.insertBefore(script, firstScript);
+            return;
+          }
+
+          document.head.appendChild(script);
+        }
+
+        function loadUmami() {
+          if (
+            window.__hsUmamiLoaded ||
+            !UMAMI_ENDPOINT ||
+            !UMAMI_WEBSITE_ID ||
+            UMAMI_ENDPOINT.indexOf("%VITE_") === 0 ||
+            UMAMI_WEBSITE_ID.indexOf("%VITE_") === 0
+          ) {
+            return;
+          }
+
+          window.__hsUmamiLoaded = true;
+
+          var script = document.createElement("script");
+          script.defer = true;
+          script.src = UMAMI_ENDPOINT + "/umami";
+          script.setAttribute("data-website-id", UMAMI_WEBSITE_ID);
+          document.head.appendChild(script);
+        }
+
+        function applyConsent(consent) {
+          window.gtag("consent", "update", consent === "all" ? GRANTED : DENIED);
+
+          if (consent === "all") {
+            loadGtm();
+            loadUmami();
+          }
+        }
+
+        function setConsent(consent) {
+          var previous = readConsent();
+
+          try {
+            window.localStorage.setItem(CONSENT_KEY, consent);
+          } catch (error) {
+            // Ignore storage failures and keep the page interactive.
+          }
+
+          applyConsent(consent);
+          dispatch("hs:consent-changed", { consent: consent, previous: previous });
+
+          if (previous === "all" && consent !== "all") {
+            window.location.reload();
+          }
+
+          return consent;
+        }
+
+        function openSettings() {
+          window.dispatchEvent(new Event("hs:consent-open"));
+        }
+
+        if (readConsent() === "all") {
+          applyConsent("all");
+        }
+
+        return {
+          getStoredConsent: readConsent,
+          setConsent: setConsent,
+          openSettings: openSettings
+        };
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -15,10 +149,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 
 </html>
