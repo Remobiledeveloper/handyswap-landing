@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import Intercom from "@intercom/messenger-js-sdk";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LocaleProvider } from "./contexts/LocaleContext";
@@ -12,6 +13,7 @@ import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
 import Shipping from "./pages/Shipping";
 import AGB from "./pages/AGB";
+
 function Router() {
   return (
     <Switch>
@@ -37,6 +39,10 @@ function Router() {
 }
 
 function App() {
+  Intercom({
+    app_id: "ymshqp6f",
+  });
+
   return (
     <ErrorBoundary>
       <ThemeProvider
