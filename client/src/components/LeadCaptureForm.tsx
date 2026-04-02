@@ -4,7 +4,7 @@
  */
 import { useLocale } from "@/contexts/LocaleContext";
 import { useState, type FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, AlertTriangle } from "lucide-react";
 
 const FORM_ENDPOINT = "https://handyswap-landing.attractgroup.com/";
@@ -80,10 +80,11 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
+        translate="no"
         className={
           variant === "compact"
-            ? "w-full max-w-md ml-auto lg:mr-8 xl:mr-12"
-            : "w-full"
+            ? "notranslate w-full max-w-md ml-auto lg:mr-8 xl:mr-12"
+            : "notranslate w-full"
         }
       >
         <div className="flex flex-col items-center gap-3 text-center">
@@ -106,7 +107,12 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
   // ── COMPACT VARIANT (hero) ──
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit} className="w-full max-w-md ml-auto lg:mr-8 xl:mr-12" noValidate>
+      <form
+        onSubmit={handleSubmit}
+        className="notranslate w-full max-w-md ml-auto lg:mr-8 xl:mr-12"
+        noValidate
+        translate="no"
+      >
         <div className="flex flex-col gap-2.5">
           {/* Input fields — stacked */}
           <div className="flex flex-col gap-2.5">
@@ -159,37 +165,23 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
         </div>
 
         {/* Validation errors */}
-        <AnimatePresence>
-          {(fieldErrors.name || fieldErrors.email) && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden"
-            >
-              <p className="text-red-300 text-xs mt-2 text-center">
-                {fieldErrors.name || fieldErrors.email}
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {(fieldErrors.name || fieldErrors.email) && (
+          <div className="overflow-hidden">
+            <p className="text-red-300 text-xs mt-2 text-center">
+              {fieldErrors.name || fieldErrors.email}
+            </p>
+          </div>
+        )}
 
         {/* Duplicate error */}
-        <AnimatePresence>
-          {status === "error-duplicate" && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden"
-            >
-              <div className="flex items-center justify-center gap-2 mt-2">
-                <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                <p className="text-amber-300 text-xs">{t.form.errorDuplicate}</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {status === "error-duplicate" && (
+          <div className="overflow-hidden">
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+              <p className="text-amber-300 text-xs">{t.form.errorDuplicate}</p>
+            </div>
+          </div>
+        )}
 
         {/* Privacy notice */}
         <p className="text-[11px] text-white/40 mt-3 text-center leading-relaxed">
@@ -204,7 +196,12 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
 
   // ── FULL VARIANT (CTA section) ──
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      className="notranslate w-full max-w-md mx-auto"
+      noValidate
+      translate="no"
+    >
       <div className="flex flex-col gap-3">
         {/* Name input */}
         <div>
@@ -219,18 +216,11 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
               fieldErrors.name ? "border-red-400" : "border-border"
             }`}
           />
-          <AnimatePresence>
-            {fieldErrors.name && (
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="text-red-500 text-xs mt-1.5 ml-1 overflow-hidden"
-              >
-                {fieldErrors.name}
-              </motion.p>
-            )}
-          </AnimatePresence>
+          {fieldErrors.name && (
+            <p className="text-red-500 text-xs mt-1.5 ml-1 overflow-hidden">
+              {fieldErrors.name}
+            </p>
+          )}
         </div>
 
         {/* Email input */}
@@ -246,18 +236,11 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
               fieldErrors.email ? "border-red-400" : "border-border"
             }`}
           />
-          <AnimatePresence>
-            {fieldErrors.email && (
-              <motion.p
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="text-red-500 text-xs mt-1.5 ml-1 overflow-hidden"
-              >
-                {fieldErrors.email}
-              </motion.p>
-            )}
-          </AnimatePresence>
+          {fieldErrors.email && (
+            <p className="text-red-500 text-xs mt-1.5 ml-1 overflow-hidden">
+              {fieldErrors.email}
+            </p>
+          )}
         </div>
 
         {/* Submit button */}
@@ -281,21 +264,14 @@ export default function LeadCaptureForm({ variant = "full" }: LeadCaptureFormPro
       </div>
 
       {/* Duplicate error */}
-      <AnimatePresence>
-        {status === "error-duplicate" && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden"
-          >
-            <div className="flex items-center justify-center gap-2 mt-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5">
-              <AlertTriangle className="w-4 h-4 text-amber-500 flex-shrink-0" />
-              <p className="text-amber-600 text-sm">{t.form.errorDuplicate}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {status === "error-duplicate" && (
+        <div className="overflow-hidden">
+          <div className="flex items-center justify-center gap-2 mt-3 bg-amber-50 border border-amber-200 rounded-lg px-4 py-2.5">
+            <AlertTriangle className="w-4 h-4 text-amber-500 flex-shrink-0" />
+            <p className="text-amber-600 text-sm">{t.form.errorDuplicate}</p>
+          </div>
+        </div>
+      )}
 
       {/* Privacy notice */}
       <p className="text-[11px] text-muted-foreground/60 mt-4 text-center leading-relaxed">
