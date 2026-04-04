@@ -140,6 +140,8 @@ export interface Translations {
     subtitle: string;
     chatButton: string;
     emailLabel: string;
+    countdownHint: string;
+    countdownChat: string;
   };
   // Floating CTA
   floatingCta: string;
@@ -356,6 +358,8 @@ const de: Translations = {
     subtitle: "Unser Team beantwortet deine Fragen gerne — schreib uns im Live-Chat oder per E-Mail.",
     chatButton: "Live-Chat starten",
     emailLabel: "E-Mail senden",
+    countdownHint: "Fragen vor dem Launch?",
+    countdownChat: "Chatte mit uns",
   },
   floatingCta: "10% Rabatt sichern",
   scroll: "Scroll",
@@ -568,6 +572,8 @@ const en: Translations = {
     subtitle: "Our team is happy to answer your questions — reach out via live chat or email.",
     chatButton: "Start Live Chat",
     emailLabel: "Send Email",
+    countdownHint: "Questions before launch?",
+    countdownChat: "Chat with us",
   },
   floatingCta: "Claim 10% Discount",
   scroll: "Scroll",
@@ -780,6 +786,8 @@ const nl: Translations = {
     subtitle: "Ons team beantwoordt je vragen graag — neem contact op via live chat of e-mail.",
     chatButton: "Live Chat starten",
     emailLabel: "E-mail sturen",
+    countdownHint: "Vragen voor de launch?",
+    countdownChat: "Chat met ons",
   },
   floatingCta: "10% Korting Claimen",
   scroll: "Scroll",
