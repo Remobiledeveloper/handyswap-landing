@@ -15,6 +15,8 @@ import {
   Headphones,
   RotateCcw,
   ArrowLeftRight,
+  Mail,
+  MessageCircle,
 } from "lucide-react";
 
 // CDN assets
@@ -349,9 +351,10 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {t.why.features.map((feature, i) => {
               const Icon = featureIcons[i];
+              const isSupport = i === 3;
               return (
                 <SectionReveal key={feature.title} delay={i * 0.1}>
-                  <div className="bg-white border border-border rounded-xl p-6 sm:p-7 hover:border-hs-blue/30 hover:shadow-md transition-all duration-300 group h-full">
+                  <div className={`bg-white border rounded-xl p-6 sm:p-7 hover:shadow-md transition-all duration-300 group h-full ${isSupport ? "border-hs-blue/40 hover:border-hs-blue/60" : "border-border hover:border-hs-blue/30"}`}>
                     <div className="w-11 h-11 rounded-lg bg-hs-blue-light flex items-center justify-center mb-4 group-hover:bg-hs-blue/10 transition-colors">
                       <Icon className="w-5 h-5 text-hs-blue" />
                     </div>
@@ -361,6 +364,25 @@ export default function Home() {
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {feature.desc}
                     </p>
+                    {isSupport && (
+                      <div className="mt-4 flex flex-col gap-2">
+                        <a
+                          href="mailto:support@handyswap.com"
+                          className="inline-flex items-center gap-1.5 text-sm text-hs-blue font-medium hover:underline"
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                          support@handyswap.com
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => window.Intercom?.("show" as never)}
+                          className="inline-flex items-center justify-center gap-1.5 bg-hs-blue text-white text-sm font-semibold rounded-lg px-4 py-2 hover:bg-hs-blue/90 transition-colors w-fit cursor-pointer"
+                        >
+                          <MessageCircle className="w-3.5 h-3.5" />
+                          {t.contact.chatButton}
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </SectionReveal>
               );
@@ -465,6 +487,39 @@ export default function Home() {
                   </div>
                 </details>
               ))}
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* ========== CONTACT / STILL HAVE QUESTIONS ========== */}
+      <section className="py-16 sm:py-20">
+        <div className="container">
+          <SectionReveal>
+            <div className="bg-gradient-to-br from-[#0a1628] to-[#1a2d4a] rounded-2xl px-6 py-12 sm:px-12 sm:py-16 text-center">
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3">
+                {t.contact.title}
+              </h2>
+              <p className="text-slate-400 text-base sm:text-lg max-w-lg mx-auto mb-8">
+                {t.contact.subtitle}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <button
+                  type="button"
+                  onClick={() => window.Intercom?.("show" as never)}
+                  className="inline-flex items-center justify-center gap-2 bg-hs-blue text-white font-semibold rounded-xl px-6 py-3 text-base hover:bg-hs-blue/90 transition-colors cursor-pointer"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  {t.contact.chatButton}
+                </button>
+                <a
+                  href="mailto:support@handyswap.com"
+                  className="inline-flex items-center justify-center gap-2 bg-transparent text-white font-semibold rounded-xl px-6 py-3 text-base border border-white/20 hover:border-white/40 transition-colors"
+                >
+                  <Mail className="w-4 h-4" />
+                  support@handyswap.com
+                </a>
+              </div>
             </div>
           </SectionReveal>
         </div>

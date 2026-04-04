@@ -134,6 +134,13 @@ export interface Translations {
     shipping: string;
     copyright: string;
   };
+  // Contact section (post-FAQ)
+  contact: {
+    title: string;
+    subtitle: string;
+    chatButton: string;
+    emailLabel: string;
+  };
   // Floating CTA
   floatingCta: string;
   // Scroll
@@ -344,6 +351,12 @@ const de: Translations = {
     shipping: "Versand & Lieferung",
     copyright: "© 2026 Handyswap. Ein Unternehmen der Remobile Group.",
   },
+  contact: {
+    title: "Noch Fragen? Wir sind für dich da!",
+    subtitle: "Unser Team beantwortet deine Fragen gerne — schreib uns im Live-Chat oder per E-Mail.",
+    chatButton: "Live-Chat starten",
+    emailLabel: "E-Mail senden",
+  },
   floatingCta: "10% Rabatt sichern",
   scroll: "Scroll",
 };
@@ -550,6 +563,12 @@ const en: Translations = {
     shipping: "Shipping & Delivery",
     copyright: "© 2026 Handyswap. A Remobile Group company.",
   },
+  contact: {
+    title: "Still have questions? We're here for you!",
+    subtitle: "Our team is happy to answer your questions — reach out via live chat or email.",
+    chatButton: "Start Live Chat",
+    emailLabel: "Send Email",
+  },
   floatingCta: "Claim 10% Discount",
   scroll: "Scroll",
 };
@@ -755,6 +774,12 @@ const nl: Translations = {
     terms: "Algemene Voorwaarden",
     shipping: "Verzending & Levering",
     copyright: "© 2026 Handyswap. Een bedrijf van de Remobile Group.",
+  },
+  contact: {
+    title: "Nog vragen? Wij staan voor je klaar!",
+    subtitle: "Ons team beantwoordt je vragen graag — neem contact op via live chat of e-mail.",
+    chatButton: "Live Chat starten",
+    emailLabel: "E-mail sturen",
   },
   floatingCta: "10% Korting Claimen",
   scroll: "Scroll",
