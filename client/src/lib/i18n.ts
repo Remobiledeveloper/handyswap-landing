@@ -142,6 +142,7 @@ export interface Translations {
     emailLabel: string;
     countdownHint: string;
     countdownChat: string;
+    countdownOr: string;
   };
   // Floating CTA
   floatingCta: string;
@@ -360,6 +361,7 @@ const de: Translations = {
     emailLabel: "E-Mail senden",
     countdownHint: "Fragen vor dem Launch?",
     countdownChat: "Chatte mit uns",
+    countdownOr: "oder schreib an",
   },
   floatingCta: "10% Rabatt sichern",
   scroll: "Scroll",
@@ -574,6 +576,7 @@ const en: Translations = {
     emailLabel: "Send Email",
     countdownHint: "Questions before launch?",
     countdownChat: "Chat with us",
+    countdownOr: "or email",
   },
   floatingCta: "Claim 10% Discount",
   scroll: "Scroll",
@@ -788,6 +791,7 @@ const nl: Translations = {
     emailLabel: "E-mail sturen",
     countdownHint: "Vragen voor de launch?",
     countdownChat: "Chat met ons",
+    countdownOr: "of mail naar",
   },
   floatingCta: "10% Korting Claimen",
   scroll: "Scroll",

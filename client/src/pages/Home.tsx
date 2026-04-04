@@ -148,23 +148,25 @@ export default function Home() {
         <div className="relative z-10 container">
           <SectionReveal>
             <CountdownTimer />
-            <p className="text-center text-muted-foreground text-sm sm:text-base mt-8 pt-6 border-t border-border/50 max-w-lg mx-auto">
-              {t.contact.countdownHint}{" "}
-              <button
-                type="button"
-                onClick={() => window.Intercom?.("show" as never)}
-                className="text-hs-blue font-semibold hover:underline cursor-pointer"
-              >
-                {t.contact.countdownChat}
-              </button>
-              {" · "}
-              <a
-                href="mailto:support@handyswap.com"
-                className="text-hs-blue font-semibold hover:underline"
-              >
-                support@handyswap.com
-              </a>
-            </p>
+            <div className="text-center text-muted-foreground text-sm sm:text-base mt-8 pt-6 border-t border-border/50 max-w-lg mx-auto">
+              <p>{t.contact.countdownHint}</p>
+              <p className="mt-1">
+                <button
+                  type="button"
+                  onClick={() => window.Intercom?.("show" as never)}
+                  className="text-hs-blue font-semibold hover:underline cursor-pointer"
+                >
+                  {t.contact.countdownChat}
+                </button>
+                {" "}{t.contact.countdownOr}{" "}
+                <a
+                  href="mailto:support@handyswap.com"
+                  className="text-hs-blue font-semibold hover:underline"
+                >
+                  support@handyswap.com
+                </a>
+              </p>
+            </div>
           </SectionReveal>
         </div>
       </section>
