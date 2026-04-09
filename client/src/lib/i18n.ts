@@ -20,6 +20,10 @@ export interface Translations {
   form: {
     namePlaceholder: string;
     placeholder: string;
+    modelPlaceholder: string;
+    appleModelsLabel: string;
+    samsungModelsLabel: string;
+    notSureYet: string;
     cta: string;
     privacy: string;
     privacyLink: string;
@@ -30,6 +34,7 @@ export interface Translations {
     successConfirm: string;
     errorName: string;
     errorEmail: string;
+    errorInterestedModel: string;
     errorDuplicate: string;
     submitting: string;
   };
@@ -164,25 +169,28 @@ const de: Translations = {
       "Tausche dein altes Gerät ein. Hol dir ein nagelneues. Zahle weniger.",
     tradeInGuarantee:
       "Garantiert höherer Trade-in Wert als MediaMarkt, Apple und Samsung.",
-    discountBanner:
-      "Zum Pre-Launch: 10% Rabatt auf deine erste Bestellung!",
+    discountBanner: "Zum Pre-Launch: 10% Rabatt auf deine erste Bestellung!",
     discountValidity: "Gültig vom 1.–14. Mai 2026 auf alle Produkte.",
   },
   form: {
     namePlaceholder: "Dein Name",
     placeholder: "Deine E-Mail-Adresse",
+    modelPlaceholder: "Für welches Modell interessierst du dich?",
+    appleModelsLabel: "Apple",
+    samsungModelsLabel: "Samsung",
+    notSureYet: "Noch nicht sicher",
     cta: "10% Rabatt sichern",
     privacy: "Mit der Anmeldung stimmst du unserer",
     privacyLink: "Datenschutzerklärung zu.",
     successTitle: "Du bist dabei!",
-    successMessage:
-      "Dein persönlicher",
+    successMessage: "Dein persönlicher",
     successCode: "10%-Rabattcode",
     successDate: "wird dir am 1. Mai per E-Mail zugesendet.",
     successConfirm:
       "Bitte bestätige deine Anmeldung in der Bestätigungs-E-Mail.",
     errorName: "Bitte gib deinen Namen ein.",
     errorEmail: "Bitte gib eine gültige E-Mail-Adresse ein.",
+    errorInterestedModel: "Bitte wähle ein Modell aus.",
     errorDuplicate: "Diese E-Mail-Adresse ist bereits registriert.",
     submitting: "Wird gesendet…",
   },
@@ -356,7 +364,8 @@ const de: Translations = {
   },
   contact: {
     title: "Noch Fragen? Wir sind für dich da!",
-    subtitle: "Unser Team beantwortet deine Fragen gerne — schreib uns im Live-Chat oder per E-Mail.",
+    subtitle:
+      "Unser Team beantwortet deine Fragen gerne — schreib uns im Live-Chat oder per E-Mail.",
     chatButton: "Live-Chat starten",
     emailLabel: "E-Mail senden",
     countdownHint: "Fragen vor dem Launch?",
@@ -377,17 +386,19 @@ const en: Translations = {
   hero: {
     headline1: "The Latest Phones.",
     headline2: "The Smarter Way to Get Them.",
-    subheadline:
-      "Trade in your old device. Get a brand-new one. Pay less.",
+    subheadline: "Trade in your old device. Get a brand-new one. Pay less.",
     tradeInGuarantee:
       "Guaranteed higher trade-in value than MediaMarkt, Apple and Samsung.",
-    discountBanner:
-      "Pre-Launch Offer: 10% Off Your First Order!",
+    discountBanner: "Pre-Launch Offer: 10% Off Your First Order!",
     discountValidity: "Valid May 1–14, 2026 on all products.",
   },
   form: {
     namePlaceholder: "Your name",
     placeholder: "Your email address",
+    modelPlaceholder: "Which model are you interested in?",
+    appleModelsLabel: "Apple",
+    samsungModelsLabel: "Samsung",
+    notSureYet: "Not sure yet",
     cta: "Claim 10% Discount",
     privacy: "By signing up, you agree to our",
     privacyLink: "Privacy Policy.",
@@ -395,9 +406,11 @@ const en: Translations = {
     successMessage: "Your personal",
     successCode: "10% discount code",
     successDate: "will be sent to you by email on May 1st.",
-    successConfirm: "Please confirm your registration in the confirmation email.",
+    successConfirm:
+      "Please confirm your registration in the confirmation email.",
     errorName: "Please enter your name.",
     errorEmail: "Please enter a valid email address.",
+    errorInterestedModel: "Please choose a model.",
     errorDuplicate: "This email address is already registered.",
     submitting: "Submitting…",
   },
@@ -424,8 +437,7 @@ const en: Translations = {
   products: {
     sectionLabel: "From May 1, 2026",
     sectionTitle: "The Latest Flagships",
-    sectionDesc:
-      "Brand new, factory sealed — delivered straight to your door.",
+    sectionDesc: "Brand new, factory sealed — delivered straight to your door.",
     discountNote: "even cheaper with 10% code",
     priceDisclaimer:
       "* Estimated prices. Final prices will be announced on April 22, 2026.",
@@ -494,8 +506,7 @@ const en: Translations = {
   },
   why: {
     title: "Why Handyswap?",
-    subtitle:
-      "We make buying smartphones easier, cheaper, and safer.",
+    subtitle: "We make buying smartphones easier, cheaper, and safer.",
     features: [
       {
         title: "10% Off at Launch",
@@ -571,7 +582,8 @@ const en: Translations = {
   },
   contact: {
     title: "Still have questions? We're here for you!",
-    subtitle: "Our team is happy to answer your questions — reach out via live chat or email.",
+    subtitle:
+      "Our team is happy to answer your questions — reach out via live chat or email.",
     chatButton: "Start Live Chat",
     emailLabel: "Send Email",
     countdownHint: "Questions before launch?",
@@ -603,6 +615,10 @@ const nl: Translations = {
   form: {
     namePlaceholder: "Je naam",
     placeholder: "Je e-mailadres",
+    modelPlaceholder: "Voor welk model heb je interesse?",
+    appleModelsLabel: "Apple",
+    samsungModelsLabel: "Samsung",
+    notSureYet: "Nog niet zeker",
     cta: "10% Korting Claimen",
     privacy: "Door je aan te melden ga je akkoord met ons",
     privacyLink: "Privacybeleid.",
@@ -613,6 +629,7 @@ const nl: Translations = {
     successConfirm: "Bevestig je aanmelding via de bevestigingsmail.",
     errorName: "Vul je naam in.",
     errorEmail: "Vul een geldig e-mailadres in.",
+    errorInterestedModel: "Kies een model.",
     errorDuplicate: "Dit e-mailadres is al geregistreerd.",
     submitting: "Wordt verzonden…",
   },
@@ -786,7 +803,8 @@ const nl: Translations = {
   },
   contact: {
     title: "Nog vragen? Wij staan voor je klaar!",
-    subtitle: "Ons team beantwoordt je vragen graag — neem contact op via live chat of e-mail.",
+    subtitle:
+      "Ons team beantwoordt je vragen graag — neem contact op via live chat of e-mail.",
     chatButton: "Live Chat starten",
     emailLabel: "E-mail sturen",
     countdownHint: "Vragen voor de launch?",
